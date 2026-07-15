@@ -1,0 +1,39 @@
+name: Daily ETF data update
+
+on:
+  schedule:
+    # 02:30 UTC = 10:30 Asia/Taipei (mid-morning check)
+    - cron: "30 2 * * 1-5"
+    # 05:30 UTC = 13:30 Asia/Taipei (TWSE market close)
+    - cron: "30 5 * * 1-5"
+  workflow_dispatch: {} # manual "Run workflow" button in the Actions tab always still works
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch data and compute indicators
+        env:
+          FINMIND_TOKEN: ${{ secrets.FINMIND_TOKEN }}
+        run: python3 scripts/fetch_data.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add site/data
+          if git diff --cached --quiet; then
+            echo "No data changes, skipping commit."
+          else
+            git commit -m "chore: daily ETF data update $(date -u +%Y-%m-%d)"
+            git push
+          fi

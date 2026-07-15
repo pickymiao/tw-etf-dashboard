@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>台灣 ETF 觀測儀表板</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+  <header class="top">
+    <h1>台灣 ETF 觀測儀表板</h1>
+    <div class="header-row">
+      <div class="updated" id="updated">載入中...</div>
+      <button class="refresh-btn" id="refresh-btn" title="重新整理資料">⟳</button>
+    </div>
+  </header>
+
+  <div class="disclaimer">
+    本站的分數是程式自動算出來的，僅供參考，不是投資建議，買賣前請自己判斷。
+  </div>
+
+  <div class="panel">
+    <button class="info-toggle" data-target="info-market">i</button>
+    <div class="panel-title-row"><h3>今日大盤走勢</h3></div>
+    <div id="market-panel">載入中...</div>
+    <div class="chart-wrap small"><canvas id="marketChart"></canvas></div>
+    <div class="info-popover" id="info-market" hidden>
+      這裡顯示台股加權指數（大盤）今天的收盤價和漲跌幅，下面小方塊是最近幾個交易日每天的漲跌幅，
+      折線圖是最近約 30 個交易日（大約 6 週）的走勢，用來快速看大盤最近是走強還是走弱。
+    </div>
+  </div>
+
+  <div class="panel panel-highlight">
+    <button class="info-toggle" data-target="info-watchlist">i</button>
+    <div class="panel-title-row"><h3>🔥 今日偏多觀察名單</h3></div>
+    <p class="chart-caption">系統每天自動算分、自動篩選出來的名單，不是手動挑的。</p>
+    <div id="watchlist-panel">載入中...</div>
+    <div class="info-popover" id="info-watchlist" hidden>
+      <p>只從下面「我的關注清單」裡面篩選，不是掃描全市場所有股票。</p>
+      <p><strong>怎麼樣算「偏多」：</strong>三項規則加總分數 ≥ 30（滿分 100）才會列進來，由高到低排序，最多列出 10 檔：</p>
+      <dl class="glossary">
+        <dt>趨勢（最多 ±40 分）</dt>
+        <dd>5 天、20 天、60 天的平均價格排列方式，短中長天期都同步往上漲，分數最高。</dd>
+        <dt>動能（最多 ±30 分）</dt>
+        <dd>看 MACD 力道方向和變化，上漲力道持續增強，分數最高。</dd>
+        <dt>大戶買賣（最多 ±30 分）</dt>
+        <dd>外資＋投信＋自營商合計買賣超，大戶買超且股價也上漲，分數最高。</dd>
+      </dl>
+      <p><strong>這只是規則算出來的結果，不是叫你現在買，也不保證明天會漲</strong>，要不要進場還是要自己判斷。</p>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <h2 class="section-title">我的關注清單</h2>
+    <div class="section-actions">
+      <button class="info-toggle static" data-target="info-badge">i</button>
+      <button class="add-toggle-btn" id="add-toggle-btn">＋ 新增股票</button>
+    </div>
+  </div>
+  <p class="chart-caption">固定顯示：你原本的 7 檔 ETF + 你自己加進來的股票（含從下面產業觀察清單「加入關注」的）。不會自己變動。</p>
+
+  <div class="info-popover" id="info-badge" hidden>
+    <span class="badge bull">偏多</span> 代表趨勢、動能、大戶買賣三項加起來偏向上漲；
+    <span class="badge bear">偏空</span> 偏向下跌；
+    <span class="badge neutral">中性</span> 方向不明顯。
+    括號內的數字是分數，範圍 -100 ~ +100，<strong>只是換算出來的參考值，不是漲跌機率，也不是投資建議</strong>。
+    點卡片可以看完整原因和圖表。
+  </div>
+
+  <form class="add-form" id="add-form" hidden>
+    <input type="text" id="add-input" placeholder="輸入代號，例如 2330 或 0050" autocomplete="off" />
+    <button type="submit" id="add-button">新增</button>
+  </form>
+  <div class="add-form-msg" id="add-form-msg"></div>
+
+  <div class="grid" id="grid">
+    <div class="empty">載入中...</div>
+  </div>
+
+  <div class="panel" style="margin-top: 28px;">
+    <button class="info-toggle" data-target="info-sector">i</button>
+    <div class="panel-title-row"><h3>📡 產業觀察清單</h3></div>
+    <p class="chart-caption">半導體/電子 + 金融/高股息主題股，每天依分數排序，只顯示前 10 名，內容會隨每天的分數變動。</p>
+    <div class="info-popover" id="info-sector" hidden>
+      <p>從半導體/電子、金融/高股息兩個主題總共 15 檔候選股票裡，每天依當天的綜合評分由高到低排序，
+        只顯示前 10 名。跟「我的關注清單」不一樣的地方是：<strong>這裡的內容會每天變動</strong>，
+        今天在榜上的股票，明天分數變差就可能被擠出前 10 名。</p>
+      <p>看到喜歡的可以點「＋ 加入關注」，它就會固定出現在上面的「我的關注清單」，不會再因為分數變化而消失。</p>
+    </div>
+    <div class="grid" id="sector-grid">
+      <div class="empty">載入中...</div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="indicators.js"></script>
+<script src="scoring.js"></script>
+<script src="app.js"></script>
+<script>renderDashboard();</script>
+</body>
+</html>

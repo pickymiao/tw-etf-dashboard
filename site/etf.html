@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ETF 明細</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="container">
+  <a class="back-link" href="index.html">&larr; 返回儀表板</a>
+  <header class="top">
+    <h1 id="title">載入中...</h1>
+    <div class="header-row">
+      <div class="updated" id="updated"></div>
+      <button class="refresh-btn" id="refresh-btn" title="重新整理資料">⟳</button>
+    </div>
+  </header>
+
+  <div class="panel">
+    <button class="info-toggle" data-target="info-glossary">i</button>
+    <div id="score-panel">載入中...</div>
+    <div class="info-popover" id="info-glossary" hidden>
+      <dl class="glossary">
+        <dt>均線 (MA)</dt>
+        <dd>過去幾天價格的平均值，看價格的方向。短天期線在長天期線上面，代表最近比較強勢。</dd>
+        <dt>RSI</dt>
+        <dd>衡量最近漲勢和跌勢的比例，0~100。超過 70 算偏高（可能追高），低於 30 算偏低（可能超跌）。</dd>
+        <dt>MACD</dt>
+        <dd>看漲跌力道的指標。柱狀圖由負轉正，代表力道轉強；由正轉負，代表力道轉弱。</dd>
+        <dt>大戶買賣（三大法人買賣超）</dt>
+        <dd>外資、投信、自營商當天買進減賣出的股數。買超代表大戶偏多，賣超代表大戶偏空，
+          但隔天不一定會延續同方向。</dd>
+        <dt>綜合分數</dt>
+        <dd>把「趨勢、力道、大戶買賣」三項加總成 -100 ~ +100 的分數，
+          <strong>只是換算出來的參考值，不是漲跌機率</strong>，過去準不準也沒有保證。</dd>
+      </dl>
+    </div>
+  </div>
+
+  <div class="panel">
+    <h3>收盤價與均線 (MA5 / MA20 / MA60)</h3>
+    <p class="chart-caption">藍線是每天收盤價，橘/綠/紅線是 5 天、20 天、60 天的平均價格。
+      藍線和橘線在上面、紅線在下面，通常代表最近比較強。</p>
+    <div class="chart-wrap"><canvas id="priceChart"></canvas></div>
+  </div>
+
+  <div class="panel">
+    <h3>RSI</h3>
+    <p class="chart-caption">數字愈高代表買氣愈旺，愈低代表賣壓愈重。常看的門檻是 70（偏高）和 30（偏低）。</p>
+    <div class="chart-wrap small"><canvas id="rsiChart"></canvas></div>
+  </div>
+
+  <div class="panel">
+    <h3>MACD</h3>
+    <p class="chart-caption">紅色代表力道偏多、綠色代表偏空，柱子愈長力道愈強。</p>
+    <div class="chart-wrap small"><canvas id="macdChart"></canvas></div>
+  </div>
+
+  <div class="panel">
+    <h3>大戶買賣（三大法人買賣超）</h3>
+    <p class="chart-caption">紅色代表當天外資+投信+自營商合計買超，綠色代表合計賣超，柱子愈長力道愈強。</p>
+    <div class="chart-wrap small"><canvas id="instChart"></canvas></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="indicators.js"></script>
+<script src="scoring.js"></script>
+<script src="app.js"></script>
+<script>renderDetail();</script>
+</body>
+</html>
