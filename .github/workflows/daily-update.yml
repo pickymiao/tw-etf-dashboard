@@ -10,10 +10,19 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
 
 jobs:
   update:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
 
@@ -37,3 +46,15 @@ jobs:
             git commit -m "chore: daily ETF data update $(date -u +%Y-%m-%d)"
             git push
           fi
+
+      # Pushes made with the default GITHUB_TOKEN (the commit above) don't trigger
+      # deploy-pages.yml's `on: push` -- GitHub blocks that to avoid recursive runs.
+      # So redeploy Pages directly here instead of relying on that workflow to fire.
+      - name: Upload site/ as the Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
