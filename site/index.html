@@ -89,11 +89,12 @@
   <div class="panel" style="margin-top: 28px;">
     <button class="info-toggle" data-target="info-sector">i</button>
     <div class="panel-title-row"><h3>📡 產業觀察清單</h3></div>
-    <p class="chart-caption">半導體/電子 + 金融/高股息主題股，每天依分數排序，只顯示前 10 名，內容會隨每天的分數變動。</p>
+    <p class="chart-caption">半導體/電子 + 金融/高股息主題股，每天依訊號強弱排序，只顯示前 10 名，內容會隨每天的分數變動。</p>
     <div class="info-popover" id="info-sector" hidden>
-      <p>從半導體/電子、金融/高股息兩個主題總共 15 檔候選股票裡，每天依當天的綜合評分由高到低排序，
-        只顯示前 10 名。跟「我的關注清單」不一樣的地方是：<strong>這裡的內容會每天變動</strong>，
-        今天在榜上的股票，明天分數變差就可能被擠出前 10 名。</p>
+      <p>從半導體/電子、金融/高股息兩個主題總共 15 檔候選股票裡，每天依「分數的絕對值」（不分正負，只看訊號強弱）
+        排序，只顯示前 10 名，強偏多、強偏空都會排到前面，中性平淡的自然排到後面。
+        跟「我的關注清單」不一樣的地方是：<strong>這裡的內容會每天變動</strong>，
+        今天在榜上的股票，明天訊號變弱就可能被擠出前 10 名。</p>
       <p>看到喜歡的可以點「＋ 加入關注」，它就會固定出現在上面的「我的關注清單」，不會再因為分數變化而消失。</p>
     </div>
     <div class="grid" id="sector-grid">

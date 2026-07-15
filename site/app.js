@@ -582,9 +582,12 @@ async function renderDashboard() {
     grid.innerHTML = myWatchlist.map(renderCard).join("");
 
     if (sectorGrid) {
+      // Rank by |score| rather than raw score: this surfaces the day's strongest
+      // signals in either direction (bullish or bearish) instead of only the
+      // highest positive numbers, which would crowd out notable bearish movers.
       const sectorRanked = sectorItems
         .slice()
-        .sort((a, b) => (b.score ? b.score.total : -Infinity) - (a.score ? a.score.total : -Infinity))
+        .sort((a, b) => (b.score ? Math.abs(b.score.total) : -Infinity) - (a.score ? Math.abs(a.score.total) : -Infinity))
         .slice(0, SECTOR_TOP_N)
         .map(i => ({ ...i, pinned: pinnedCodes.includes(i.code) }));
       sectorGrid.innerHTML = sectorRanked.length
