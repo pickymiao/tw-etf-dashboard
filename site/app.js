@@ -511,6 +511,7 @@ async function renderDetail() {
       updatedEl.textContent = "即時計算（手動新增的股票，資料來自瀏覽器即時查詢）";
     }
     renderScorePanel(scorePanel, score);
+    renderChartAnalyses(series, score);
 
     createChart("priceChart", {
       type: "line",
@@ -580,17 +581,65 @@ function chartOptions(yRange = {}) {
   };
 }
 
+function rsiAnalysisText(rsiValue) {
+  if (rsiValue == null) return "目前沒有 RSI 資料。";
+  const v = rsiValue.toFixed(0);
+  if (rsiValue >= 70) return `今天 RSI 是 ${v}，偏高，可能買氣過熱，留意回檔。`;
+  if (rsiValue <= 30) return `今天 RSI 是 ${v}，偏低，可能賣壓過重，留意反彈。`;
+  return `今天 RSI 是 ${v}，普通，沒有過熱或超賣訊號。`;
+}
+
+/** Fills in each chart panel's visible caption with today's actual reading
+ * (reusing the score breakdown reasons for price/MACD/大戶買賣), instead of
+ * only the static "what is this indicator" text (that's now behind the i icon). */
+function renderChartAnalyses(series, score) {
+  const today = series[series.length - 1];
+  const priceEl = document.getElementById("price-analysis");
+  const rsiEl = document.getElementById("rsi-analysis");
+  const macdEl = document.getElementById("macd-analysis");
+  const instEl = document.getElementById("inst-analysis");
+
+  const findFactor = prefix => score && score.breakdown.find(b => b.factor.startsWith(prefix));
+  const trend = findFactor("趨勢");
+  const momentum = findFactor("動能");
+  const chip = findFactor("籌碼");
+
+  if (priceEl) priceEl.textContent = trend ? `今天分析：${trend.reason}。` : "目前沒有足夠資料分析趨勢。";
+  if (rsiEl) rsiEl.textContent = `今天分析：${rsiAnalysisText(today ? today.rsi14 : null)}`;
+  if (macdEl) macdEl.textContent = momentum ? `今天分析：${momentum.reason}。` : "目前沒有足夠資料分析動能。";
+  if (instEl) instEl.textContent = chip ? `今天分析：${chip.reason}。` : "目前沒有足夠資料分析籌碼。";
+}
+
+/** Builds a per-stock plain-language summary from the actual score + breakdown,
+ * instead of one fixed sentence per label (so "中性 20" and "中性 -25" read differently). */
+function describeScore(score) {
+  const total = score.total;
+  let lean;
+  if (total >= 60) lean = "訊號強烈偏多";
+  else if (total >= 30) lean = "偏多";
+  else if (total >= 10) lean = "稍微偏多，但還沒到偏多的門檻（30分）";
+  else if (total > -10) lean = "多空力量差不多，方向不明顯";
+  else if (total > -30) lean = "稍微偏空，但還沒到偏空的門檻（-30分）";
+  else if (total > -60) lean = "偏空";
+  else lean = "訊號強烈偏空";
+
+  const dominant = score.breakdown.reduce(
+    (a, b) => (Math.abs(b.score) > Math.abs(a.score) ? b : a)
+  );
+  const dominantText = dominant.score !== 0
+    ? `目前影響最大的是「${dominant.factor}」：${dominant.reason}。`
+    : "";
+
+  return `白話說：綜合分數 ${total} 分，${lean}。${dominantText}不保證之後真的會照這個方向走。`;
+}
+
 function renderScorePanel(panel, score) {
   if (!score) {
     panel.innerHTML = '<div class="empty">尚無評分資料</div>';
     return;
   }
   const cls = scoreClass(score.label);
-  const plain = {
-    "偏多": "白話說：趨勢、力道、大戶買賣三項加起來偏向上漲，但不保證真的會漲。",
-    "偏空": "白話說：趨勢、力道、大戶買賣三項加起來偏向下跌，但不保證真的會跌。",
-    "中性": "白話說：三項指標互相矛盾或都不明顯，方向不清楚，先觀望比較保守。",
-  }[score.label] || "";
+  const plain = describeScore(score);
   panel.innerHTML = `
     <div class="badge ${cls}">${score.label}</div>
     <div class="score-total">${score.total}</div>

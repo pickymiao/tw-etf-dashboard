@@ -42,28 +42,44 @@
   </div>
 
   <div class="panel">
+    <button class="info-toggle" data-target="info-price">i</button>
     <h3>收盤價與均線 (MA5 / MA20 / MA60)</h3>
-    <p class="chart-caption">藍線是每天收盤價，橘/綠/紅線是 5 天、20 天、60 天的平均價格。
-      藍線和橘線在上面、紅線在下面，通常代表最近比較強。</p>
+    <p class="chart-caption" id="price-analysis">載入中...</p>
     <div class="chart-wrap"><canvas id="priceChart"></canvas></div>
+    <div class="info-popover" id="info-price" hidden>
+      藍線是每天收盤價，橘/綠/紅線是 5 天、20 天、60 天的平均價格。
+      藍線和橘線在上面、紅線在下面，通常代表最近比較強。
+    </div>
   </div>
 
   <div class="panel">
+    <button class="info-toggle" data-target="info-rsi">i</button>
     <h3>RSI</h3>
-    <p class="chart-caption">數字愈高代表買氣愈旺，愈低代表賣壓愈重。常看的門檻是 70（偏高）和 30（偏低）。</p>
+    <p class="chart-caption" id="rsi-analysis">載入中...</p>
     <div class="chart-wrap small"><canvas id="rsiChart"></canvas></div>
+    <div class="info-popover" id="info-rsi" hidden>
+      數字愈高代表買氣愈旺，愈低代表賣壓愈重。常看的門檻是 70（偏高）和 30（偏低）。
+    </div>
   </div>
 
   <div class="panel">
+    <button class="info-toggle" data-target="info-macd">i</button>
     <h3>MACD</h3>
-    <p class="chart-caption">紅色代表力道偏多、綠色代表偏空，柱子愈長力道愈強。</p>
+    <p class="chart-caption" id="macd-analysis">載入中...</p>
     <div class="chart-wrap small"><canvas id="macdChart"></canvas></div>
+    <div class="info-popover" id="info-macd" hidden>
+      紅色代表力道偏多、綠色代表偏空，柱子愈長力道愈強。
+    </div>
   </div>
 
   <div class="panel">
+    <button class="info-toggle" data-target="info-inst">i</button>
     <h3>大戶買賣（三大法人買賣超）</h3>
-    <p class="chart-caption">紅色代表當天外資+投信+自營商合計買超，綠色代表合計賣超，柱子愈長力道愈強。</p>
+    <p class="chart-caption" id="inst-analysis">載入中...</p>
     <div class="chart-wrap small"><canvas id="instChart"></canvas></div>
+    <div class="info-popover" id="info-inst" hidden>
+      紅色代表當天外資+投信+自營商合計買超，綠色代表合計賣超，柱子愈長力道愈強。
+    </div>
   </div>
 </div>
 
