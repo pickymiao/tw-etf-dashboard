@@ -1,7 +1,9 @@
 const CUSTOM_WATCHLIST_KEY = "tw_etf_dashboard_custom_watchlist";
 const PINNED_SECTOR_KEY = "tw_etf_dashboard_pinned_sector";
+const HIDDEN_WATCHLIST_KEY = "tw_etf_dashboard_hidden_watchlist";
 const SECTOR_TOP_N = 10; // how many of the sector pool to show each day, ranked by score
 let trackedCodes = []; // codes already covered by the daily batch (config/etfs.json), filled in by renderDashboard
+let editMode = false; // when true, "我的關注清單" cards show remove controls and the add form is visible
 const FINMIND_URL = "https://api.finmindtrade.com/api/v4/data";
 const INST_CATEGORIES = [
   "Foreign_Investor", "Foreign_Dealer_Self", "Investment_Trust", "Dealer_self", "Dealer_Hedging",
@@ -110,6 +112,32 @@ function unpinSectorCode(code) {
   renderDashboard();
 }
 
+// ---- Hidden original-watchlist codes: lets the user remove one of the 7
+// permanently-tracked ETFs from their own view without touching config/etfs.json. ----
+
+function loadHiddenCodes() {
+  try {
+    return JSON.parse(localStorage.getItem(HIDDEN_WATCHLIST_KEY) || "[]");
+  } catch {
+    return [];
+  }
+}
+
+function saveHiddenCodes(codes) {
+  localStorage.setItem(HIDDEN_WATCHLIST_KEY, JSON.stringify(codes));
+}
+
+function hideWatchlistCode(code) {
+  const codes = loadHiddenCodes();
+  if (!codes.includes(code)) saveHiddenCodes([...codes, code]);
+  renderDashboard();
+}
+
+function unhideWatchlistCode(code) {
+  saveHiddenCodes(loadHiddenCodes().filter(c => c !== code));
+  renderDashboard();
+}
+
 function finmindDateDaysAgo(days) {
   const d = new Date();
   d.setDate(d.getDate() - days);
@@ -127,6 +155,47 @@ async function finmindFetch(dataset, code, startDate) {
 async function lookupStockName(code) {
   const rows = await finmindFetch("TaiwanStockInfo", code, "2020-01-01").catch(() => []);
   return rows.length ? rows[0].stock_name : null;
+}
+
+// ---- Search-by-name for the add form: fetch the full stock list once and
+// cache it in memory, so typing a Chinese name (not just a code) works too. ----
+
+let stockInfoCache = null;
+let stockInfoLoadingPromise = null;
+
+async function loadStockInfoList() {
+  if (stockInfoCache) return stockInfoCache;
+  if (!stockInfoLoadingPromise) {
+    stockInfoLoadingPromise = fetch(`${FINMIND_URL}?dataset=TaiwanStockInfo`)
+      .then(res => res.json())
+      .then(payload => {
+        const seen = new Set();
+        stockInfoCache = (payload.data || []).filter(r => {
+          if (seen.has(r.stock_id)) return false;
+          seen.add(r.stock_id);
+          return true;
+        });
+        return stockInfoCache;
+      })
+      .catch(() => {
+        stockInfoLoadingPromise = null; // allow retrying later
+        return [];
+      });
+  }
+  return stockInfoLoadingPromise;
+}
+
+function searchStockInfo(query, list, limit = 8) {
+  const q = query.trim().toUpperCase();
+  if (!q) return [];
+  const codeMatches = [];
+  const nameMatches = [];
+  for (const r of list) {
+    if (r.stock_id.toUpperCase().startsWith(q)) codeMatches.push(r);
+    else if (r.stock_name.includes(query.trim())) nameMatches.push(r);
+    if (codeMatches.length + nameMatches.length >= limit * 3) break;
+  }
+  return [...codeMatches, ...nameMatches].slice(0, limit);
 }
 
 /** Fetch + score a ticker entirely client-side (used for manually-added stocks
@@ -199,15 +268,67 @@ async function loadCustomSummaryItems() {
   return results;
 }
 
-function initAddToggle() {
-  const toggleBtn = document.getElementById("add-toggle-btn");
-  const form = document.getElementById("add-form");
-  if (!toggleBtn || !form || toggleBtn.dataset.bound) return;
+function initEditToggle() {
+  const toggleBtn = document.getElementById("edit-toggle-btn");
+  const wrapper = document.getElementById("add-form-wrapper");
+  if (!toggleBtn || !wrapper || toggleBtn.dataset.bound) return;
   toggleBtn.dataset.bound = "1";
   toggleBtn.addEventListener("click", () => {
-    form.hidden = !form.hidden;
-    if (!form.hidden) document.getElementById("add-input").focus();
+    editMode = !editMode;
+    toggleBtn.textContent = editMode ? "完成" : "編輯";
+    wrapper.hidden = !editMode;
+    if (editMode) {
+      document.getElementById("add-input").focus();
+      loadStockInfoList(); // warm the cache so suggestions are ready as they type
+    }
+    renderDashboard();
   });
+}
+
+function hideAddSuggestions() {
+  const list = document.getElementById("add-suggestions");
+  if (list) { list.hidden = true; list.innerHTML = ""; }
+}
+
+function initAddSearch() {
+  const input = document.getElementById("add-input");
+  const list = document.getElementById("add-suggestions");
+  if (!input || !list || input.dataset.searchBound) return;
+  input.dataset.searchBound = "1";
+
+  let debounceTimer = null;
+  input.addEventListener("input", () => {
+    clearTimeout(debounceTimer);
+    const query = input.value;
+    debounceTimer = setTimeout(async () => {
+      if (!query.trim()) { hideAddSuggestions(); return; }
+      const stocks = await loadStockInfoList();
+      const matches = searchStockInfo(query, stocks);
+      if (!matches.length) { hideAddSuggestions(); return; }
+      list.innerHTML = matches.map(r => `
+        <li><button type="button" data-code="${r.stock_id}">${r.stock_id} ${escapeHtml(r.stock_name)}</button></li>
+      `).join("");
+      list.hidden = false;
+    }, 150);
+  });
+
+  list.addEventListener("click", e => {
+    const btn = e.target.closest("button[data-code]");
+    if (!btn) return;
+    input.value = btn.dataset.code;
+    hideAddSuggestions();
+    input.focus();
+  });
+
+  document.addEventListener("click", e => {
+    if (!list.contains(e.target) && e.target !== input) hideAddSuggestions();
+  });
+}
+
+function escapeHtml(str) {
+  return str.replace(/[&<>"']/g, ch => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[ch]));
 }
 
 function initAddForm() {
@@ -220,8 +341,24 @@ function initAddForm() {
 
   form.addEventListener("submit", async e => {
     e.preventDefault();
-    const code = input.value.trim().toUpperCase();
-    if (!code) return;
+    const raw = input.value.trim();
+    if (!raw) return;
+
+    let code = raw.toUpperCase();
+    if (!/^[0-9A-Z]+$/.test(code) && stockInfoCache) {
+      const match = stockInfoCache.find(r => r.stock_name === raw)
+        || stockInfoCache.find(r => r.stock_name.includes(raw));
+      if (match) code = match.stock_id;
+    }
+
+    const hiddenCodes = loadHiddenCodes();
+    if (hiddenCodes.includes(code)) {
+      unhideWatchlistCode(code);
+      msg.textContent = `已重新加回關注清單 (${code})`;
+      input.value = "";
+      hideAddSuggestions();
+      return;
+    }
 
     const existing = loadCustomCodes();
     if (existing.includes(code) || trackedCodes.includes(code)) {
@@ -229,6 +366,7 @@ function initAddForm() {
       return;
     }
 
+    hideAddSuggestions();
     button.disabled = true;
     msg.textContent = "查詢中...";
     try {
@@ -238,7 +376,7 @@ function initAddForm() {
       input.value = "";
       renderDashboard();
     } catch (err) {
-      msg.textContent = err.message || "新增失敗，請確認代號是否正確";
+      msg.textContent = err.message || "新增失敗，請確認代號或名稱是否正確";
     } finally {
       button.disabled = false;
     }
@@ -332,9 +470,12 @@ function renderWatchlist(items) {
 
 function renderCard(item) {
   if (item.error) {
+    const removeBtn = editMode
+      ? `<button class="remove-btn" onclick="event.preventDefault(); event.stopPropagation(); removeCustomCode('${item.code}')">×</button>`
+      : "";
     return `
-      <div class="card custom">
-        <button class="remove-btn" onclick="removeCustomCode('${item.code}')">×</button>
+      <div class="card${removeBtn ? " custom" : ""}">
+        ${removeBtn}
         <div class="code">${item.code}</div>
         <div class="empty" style="padding: 8px 0; text-align: left;">載入失敗：${item.error}</div>
       </div>
@@ -348,14 +489,18 @@ function renderCard(item) {
   const changeText = fmtChange(change);
 
   let cornerBtn = "";
-  if (item.custom) {
-    cornerBtn = `<button class="remove-btn" onclick="removeCustomCode('${item.code}')" title="移除">×</button>`;
-  } else if (item.pinned) {
-    cornerBtn = `<button class="remove-btn" onclick="unpinSectorCode('${item.code}')" title="從關注清單移除（仍會留在產業觀察清單）">×</button>`;
+  if (editMode) {
+    if (item.custom) {
+      cornerBtn = `<button class="remove-btn" onclick="event.preventDefault(); event.stopPropagation(); removeCustomCode('${item.code}')" title="移除">×</button>`;
+    } else if (item.pinned) {
+      cornerBtn = `<button class="remove-btn" onclick="event.preventDefault(); event.stopPropagation(); unpinSectorCode('${item.code}')" title="從關注清單移除（仍會留在產業觀察清單）">×</button>`;
+    } else if (item.group === "watchlist") {
+      cornerBtn = `<button class="remove-btn" onclick="event.preventDefault(); event.stopPropagation(); hideWatchlistCode('${item.code}')" title="從我的關注清單移除">×</button>`;
+    }
   }
 
   return `
-    <a class="card${item.custom || item.pinned ? " custom" : ""}" href="etf.html?code=${encodeURIComponent(item.code)}">
+    <a class="card${cornerBtn ? " custom" : ""}" href="etf.html?code=${encodeURIComponent(item.code)}">
       ${cornerBtn}
       <div class="code">${item.code}</div>
       <div class="name">${item.name}</div>
@@ -402,7 +547,8 @@ async function renderDashboard() {
   const sectorGrid = document.getElementById("sector-grid");
   const updatedEl = document.getElementById("updated");
   initInfoToggles();
-  initAddToggle();
+  initEditToggle();
+  initAddSearch();
   initAddForm();
   initRefreshButton(() => renderDashboard());
   renderMarketPanel();
@@ -415,11 +561,12 @@ async function renderDashboard() {
     updatedEl.textContent = `最後更新：${fmtDate(summary.updated_at)}`;
     trackedCodes = summary.items.map(i => i.code);
 
-    const watchlistItems = summary.items.filter(i => i.group === "watchlist");
+    const hiddenCodes = loadHiddenCodes();
+    const watchlistItems = summary.items.filter(i => i.group === "watchlist" && !hiddenCodes.includes(i.code));
     const sectorItems = summary.items.filter(i => i.group === "sector");
     const pinnedCodes = loadPinnedCodes();
 
-    const allItems = [...summary.items, ...customItems];
+    const allItems = [...watchlistItems, ...sectorItems, ...customItems];
     if (!allItems.length) {
       grid.innerHTML = '<div class="empty">目前沒有資料</div>';
       return;

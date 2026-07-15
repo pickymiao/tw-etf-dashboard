@@ -58,7 +58,7 @@
     <h2 class="section-title">我的關注清單</h2>
     <div class="section-actions">
       <button class="info-toggle static" data-target="info-badge">i</button>
-      <button class="add-toggle-btn" id="add-toggle-btn">＋ 新增股票</button>
+      <button class="edit-toggle-btn" id="edit-toggle-btn">編輯</button>
     </div>
   </div>
   <p class="chart-caption">固定顯示：你原本的 7 檔 ETF + 你自己加進來的股票（含從下面產業觀察清單「加入關注」的）。不會自己變動。</p>
@@ -68,14 +68,19 @@
     <span class="badge bear">偏空</span> 偏向下跌；
     <span class="badge neutral">中性</span> 方向不明顯。
     括號內的數字是分數，範圍 -100 ~ +100，<strong>只是換算出來的參考值，不是漲跌機率，也不是投資建議</strong>。
-    點卡片可以看完整原因和圖表。
+    點卡片可以看完整原因和圖表。點「編輯」可以新增股票，或移除你不想再看到的標的。
   </div>
 
-  <form class="add-form" id="add-form" hidden>
-    <input type="text" id="add-input" placeholder="輸入代號，例如 2330 或 0050" autocomplete="off" />
-    <button type="submit" id="add-button">新增</button>
-  </form>
-  <div class="add-form-msg" id="add-form-msg"></div>
+  <div class="add-form-wrapper" id="add-form-wrapper" hidden>
+    <form class="add-form" id="add-form">
+      <div class="add-input-wrap">
+        <input type="text" id="add-input" placeholder="輸入代號或名稱，例如 2330、台積電" autocomplete="off" />
+        <ul class="add-suggestions" id="add-suggestions" hidden></ul>
+      </div>
+      <button type="submit" id="add-button">新增</button>
+    </form>
+    <div class="add-form-msg" id="add-form-msg"></div>
+  </div>
 
   <div class="grid" id="grid">
     <div class="empty">載入中...</div>
