@@ -42,14 +42,17 @@ python3 -m http.server 8000 --directory site
 
 ## 部署步驟（GitHub Pages，免費）
 
-1. 在 GitHub 建一個新 repo（public 或 private 皆可），把這個資料夾 push 上去。
-2. Repo 設定 -> Pages -> Source 選擇 `Deploy from a branch`，Branch 選 `main`，資料夾選 `/site`。
+1. 在 GitHub 建一個新 repo，把這個資料夾 push 上去。
+   注意：GitHub Pages 的「Deploy from a branch」模式只支援 `/ (root)` 或 `/docs` 資料夾，
+   選不到 `/site`，而且 private repo 免費方案不能開 Pages，所以這個專案改用下面的 GitHub Actions 部署法。
+2. Repo 設定 -> Pages -> Source 選擇 `GitHub Actions`（不要選 `Deploy from a branch`）。
+   `.github/workflows/deploy-pages.yml` 已經寫好，會把 `site/` 資料夾打包部署，每次 push 到 main 都會自動重新部署。
 3. Repo 設定 -> Actions -> General -> Workflow permissions，確認允許 `Read and write permissions`
    （daily-update.yml 需要 push 權限才能提交每日資料）。
 4.（可選）若之後 FinMind 免費額度不夠用，可到 finmindtrade.com 申請 token，
    在 repo Settings -> Secrets and variables -> Actions 新增 `FINMIND_TOKEN`。
-5. 之後每天 18:00（台北時間）Actions 會自動抓資料、算指標、commit，GitHub Pages 會自動重新部署。
-   也可以到 Actions 頁籤手動點 `Run workflow` 立即跑一次。
+5. 之後每個交易日 10:30、13:30（台北時間）Actions 會自動抓資料、算指標、commit，
+   commit 會觸發 `deploy-pages.yml` 自動重新部署網站。也可以到 Actions 頁籤手動點 `Run workflow` 立即跑一次。
 
 ## 之後要擴充
 
