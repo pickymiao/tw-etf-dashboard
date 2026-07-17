@@ -2,10 +2,10 @@ name: Daily ETF data update
 
 on:
   schedule:
-    # 02:30 UTC = 10:30 Asia/Taipei (mid-morning check)
-    - cron: "30 2 * * 1-5"
-    # 05:30 UTC = 13:30 Asia/Taipei (TWSE market close)
-    - cron: "30 5 * * 1-5"
+    # 10:30 UTC = 18:30 Asia/Taipei -- by this time TWSE closing prices AND the
+    # 三大法人 institutional buy/sell report are both reliably published (running
+    # right at 13:30 close was too early for the institutional data specifically).
+    - cron: "30 10 * * 1-5"
   workflow_dispatch: {} # manual "Run workflow" button in the Actions tab always still works
 
 permissions:

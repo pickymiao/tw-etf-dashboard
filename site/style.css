@@ -550,44 +550,6 @@ canvas {
   padding-top: 18px;
 }
 
-/* Header + refresh */
-.header-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.refresh-btn {
-  border: 2px solid var(--ink);
-  background: var(--blue);
-  color: #fff;
-  border-radius: 50%;
-  width: 28px;
-  height: 28px;
-  font-size: 0.95rem;
-  font-weight: 700;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  box-shadow: 3px 3px 0 #000;
-}
-.refresh-btn:hover {
-  transform: translate(1px, 1px);
-  box-shadow: 2px 2px 0 #000;
-}
-.refresh-btn:disabled {
-  cursor: default;
-  opacity: 0.6;
-}
-.refresh-btn.spinning {
-  animation: spin 0.8s linear infinite;
-}
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 /* Up/down arrow indicators */
 .arrow {
   font-size: 0.75em;

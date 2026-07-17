@@ -51,8 +51,9 @@ python3 -m http.server 8000 --directory site
    （daily-update.yml 需要 push 權限才能提交每日資料）。
 4.（可選）若之後 FinMind 免費額度不夠用，可到 finmindtrade.com 申請 token，
    在 repo Settings -> Secrets and variables -> Actions 新增 `FINMIND_TOKEN`。
-5. 之後每個交易日 10:30、13:30（台北時間）Actions 會自動抓資料、算指標、commit，
+5. 之後每個交易日 18:30（台北時間）Actions 會自動抓資料、算指標、commit，
    commit 會觸發 `deploy-pages.yml` 自動重新部署網站。也可以到 Actions 頁籤手動點 `Run workflow` 立即跑一次。
+   （選這個時間是因為收盤價和三大法人買賣超資料屆時都已經公佈，抓太早三大法人資料常常還沒出來）
 
 ## 之後要擴充
 

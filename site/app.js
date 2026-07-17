@@ -50,22 +50,6 @@ function initInfoToggles() {
   });
 }
 
-function initRefreshButton(onRefresh) {
-  const btn = document.getElementById("refresh-btn");
-  if (!btn || btn.dataset.bound) return;
-  btn.dataset.bound = "1";
-  btn.addEventListener("click", async () => {
-    btn.disabled = true;
-    btn.classList.add("spinning");
-    try {
-      await onRefresh();
-    } finally {
-      btn.disabled = false;
-      btn.classList.remove("spinning");
-    }
-  });
-}
-
 // ---- Custom (user-added) watchlist: stored locally, fetched + scored live in the browser ----
 
 function loadCustomCodes() {
@@ -550,7 +534,6 @@ async function renderDashboard() {
   initEditToggle();
   initAddSearch();
   initAddForm();
-  initRefreshButton(() => renderDashboard());
   renderMarketPanel();
 
   try {
@@ -638,7 +621,6 @@ async function renderDetail() {
   const updatedEl = document.getElementById("updated");
   const scorePanel = document.getElementById("score-panel");
   initInfoToggles();
-  initRefreshButton(() => renderDetail());
 
   if (!code) {
     titleEl.textContent = "找不到代號";
