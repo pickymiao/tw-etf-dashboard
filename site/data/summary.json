@@ -1,17 +1,51 @@
 {
-  "updated_at": "2026-10-28T16:45:26+00:00",
+  "updated_at": "2026-10-29T17:01:17+00:00",
   "items": [
     {
       "code": "00881",
       "name": "國泰台灣5G+",
       "group": "watchlist",
-      "date": "2026-10-28",
-      "close": 49.41,
-      "change": 1.1699999999999946,
-      "volume": 10004086,
-      "inst_buy": 6329406,
-      "inst_sell": 6185227,
-      "inst_net": 144179,
+      "date": "2026-10-29",
+      "close": 48.38,
+      "change": -1.029999999999994,
+      "volume": 18002098,
+      "inst_buy": 6048382,
+      "inst_sell": 16004826,
+      "inst_net": -9956444,
+      "score": {
+        "total": -40,
+        "label": "偏空",
+        "breakdown": [
+          {
+            "factor": "趨勢（價格方向）",
+            "score": 0,
+            "reason": "漲跌不明顯"
+          },
+          {
+            "factor": "動能（漲跌力道）",
+            "score": -10,
+            "reason": "還在跌，但力道變弱"
+          },
+          {
+            "factor": "籌碼（大戶買賣）",
+            "score": -30,
+            "reason": "大戶賣超 9,956 張，股價也下跌"
+          }
+        ],
+        "caution": "RSI 19，偏低，可能賣壓過重，留意反彈"
+      }
+    },
+    {
+      "code": "00941",
+      "name": "中信上游半導體",
+      "group": "watchlist",
+      "date": "2026-10-29",
+      "close": 24.86,
+      "change": 0.259999999999998,
+      "volume": 957679,
+      "inst_buy": 874004,
+      "inst_sell": 430308,
+      "inst_net": 443696,
       "score": {
         "total": 20,
         "label": "中性",
@@ -29,60 +63,26 @@
           {
             "factor": "籌碼（大戶買賣）",
             "score": 30,
-            "reason": "大戶買超 144 張，股價也上漲"
+            "reason": "大戶買超 444 張，股價也上漲"
           }
         ],
-        "caution": "RSI 22，偏低，可能賣壓過重，留意反彈"
-      }
-    },
-    {
-      "code": "00941",
-      "name": "中信上游半導體",
-      "group": "watchlist",
-      "date": "2026-10-28",
-      "close": 24.6,
-      "change": 0.5,
-      "volume": 1442519,
-      "inst_buy": 776000,
-      "inst_sell": 1121000,
-      "inst_net": -345000,
-      "score": {
-        "total": -25,
-        "label": "中性",
-        "breakdown": [
-          {
-            "factor": "趨勢（價格方向）",
-            "score": 0,
-            "reason": "漲跌不明顯"
-          },
-          {
-            "factor": "動能（漲跌力道）",
-            "score": -10,
-            "reason": "還在跌，但力道變弱"
-          },
-          {
-            "factor": "籌碼（大戶買賣）",
-            "score": -15,
-            "reason": "大戶賣超 345 張，但股價還撐得住"
-          }
-        ],
-        "caution": "RSI 22，偏低，可能賣壓過重，留意反彈"
+        "caution": "RSI 24，偏低，可能賣壓過重，留意反彈"
       }
     },
     {
       "code": "00981A",
       "name": "主動統一台股增長",
       "group": "watchlist",
-      "date": "2026-10-28",
-      "close": 28.65,
-      "change": 1.25,
-      "volume": 120661077,
-      "inst_buy": 40774671,
-      "inst_sell": 57552800,
-      "inst_net": -16778129,
+      "date": "2026-10-29",
+      "close": 27.81,
+      "change": -0.8399999999999999,
+      "volume": 171631550,
+      "inst_buy": 35614553,
+      "inst_sell": 116497283,
+      "inst_net": -80882730,
       "score": {
-        "total": -25,
-        "label": "中性",
+        "total": -40,
+        "label": "偏空",
         "breakdown": [
           {
             "factor": "趨勢（價格方向）",
@@ -96,27 +96,27 @@
           },
           {
             "factor": "籌碼（大戶買賣）",
-            "score": -15,
-            "reason": "大戶賣超 16,778 張，但股價還撐得住"
+            "score": -30,
+            "reason": "大戶賣超 80,883 張，股價也下跌"
           }
         ],
-        "caution": "RSI 23，偏低，可能賣壓過重，留意反彈"
+        "caution": "RSI 21，偏低，可能賣壓過重，留意反彈"
       }
     },
     {
       "code": "00400A",
       "name": "主動國泰動能高息",
       "group": "watchlist",
-      "date": "2026-10-28",
-      "close": 14.71,
-      "change": 0.5300000000000011,
-      "volume": 24640364,
-      "inst_buy": 13259019,
-      "inst_sell": 15767094,
-      "inst_net": -2508075,
+      "date": "2026-10-29",
+      "close": 14.36,
+      "change": -0.3500000000000014,
+      "volume": 29745814,
+      "inst_buy": 6122100,
+      "inst_sell": 19934046,
+      "inst_net": -13811946,
       "score": {
-        "total": -25,
-        "label": "中性",
+        "total": -40,
+        "label": "偏空",
         "breakdown": [
           {
             "factor": "趨勢（價格方向）",
@@ -130,27 +130,27 @@
           },
           {
             "factor": "籌碼（大戶買賣）",
-            "score": -15,
-            "reason": "大戶賣超 2,508 張，但股價還撐得住"
+            "score": -30,
+            "reason": "大戶賣超 13,812 張，股價也下跌"
           }
         ],
-        "caution": "RSI 27，偏低，可能賣壓過重，留意反彈"
+        "caution": "RSI 23，偏低，可能賣壓過重，留意反彈"
       }
     },
     {
       "code": "00900",
       "name": "富邦特選高股息30",
       "group": "watchlist",
-      "date": "2026-10-28",
-      "close": 19.91,
-      "change": -0.03999999999999915,
-      "volume": 3577355,
-      "inst_buy": 3094268,
-      "inst_sell": 1348253,
-      "inst_net": 1746015,
+      "date": "2026-10-29",
+      "close": 19.78,
+      "change": -0.129999999999999,
+      "volume": 1485471,
+      "inst_buy": 1017808,
+      "inst_sell": 478338,
+      "inst_net": 539470,
       "score": {
-        "total": 45,
-        "label": "偏多",
+        "total": 25,
+        "label": "中性",
         "breakdown": [
           {
             "factor": "趨勢（價格方向）",
@@ -159,13 +159,13 @@
           },
           {
             "factor": "動能（漲跌力道）",
-            "score": -10,
-            "reason": "還在跌，但力道變弱"
+            "score": -30,
+            "reason": "下跌力道正在增強"
           },
           {
             "factor": "籌碼（大戶買賣）",
             "score": 15,
-            "reason": "大戶買超 1,746 張，但股價還沒漲"
+            "reason": "大戶買超 539 張，但股價還沒漲"
           }
         ],
         "caution": null
@@ -175,15 +175,15 @@
       "code": "00878",
       "name": "國泰永續高股息",
       "group": "watchlist",
-      "date": "2026-10-28",
-      "close": 35.65,
-      "change": 0.25,
-      "volume": 21649700,
-      "inst_buy": 5270413,
-      "inst_sell": 9695909,
-      "inst_net": -4425496,
+      "date": "2026-10-29",
+      "close": 35.3,
+      "change": -0.3500000000000014,
+      "volume": 43828395,
+      "inst_buy": 3028779,
+      "inst_sell": 37532807,
+      "inst_net": -34504028,
       "score": {
-        "total": 15,
+        "total": -20,
         "label": "中性",
         "breakdown": [
           {
@@ -193,13 +193,13 @@
           },
           {
             "factor": "動能（漲跌力道）",
-            "score": -10,
-            "reason": "還在跌，但力道變弱"
+            "score": -30,
+            "reason": "下跌力道正在增強"
           },
           {
             "factor": "籌碼（大戶買賣）",
-            "score": -15,
-            "reason": "大戶賣超 4,425 張，但股價還撐得住"
+            "score": -30,
+            "reason": "大戶賣超 34,504 張，股價也下跌"
           }
         ],
         "caution": null
@@ -209,16 +209,16 @@
       "code": "00940",
       "name": "元大台灣價值高息",
       "group": "watchlist",
-      "date": "2026-10-28",
-      "close": 13.47,
-      "change": 0.07000000000000028,
-      "volume": 7877221,
-      "inst_buy": 6184276,
-      "inst_sell": 2414680,
-      "inst_net": 3769596,
+      "date": "2026-10-29",
+      "close": 13.32,
+      "change": -0.15000000000000036,
+      "volume": 6935910,
+      "inst_buy": 2394075,
+      "inst_sell": 4100624,
+      "inst_net": -1706549,
       "score": {
-        "total": 60,
-        "label": "偏多",
+        "total": -20,
+        "label": "中性",
         "breakdown": [
           {
             "factor": "趨勢（價格方向）",
@@ -227,13 +227,13 @@
           },
           {
             "factor": "動能（漲跌力道）",
-            "score": -10,
-            "reason": "還在跌，但力道變弱"
+            "score": -30,
+            "reason": "下跌力道正在增強"
           },
           {
             "factor": "籌碼（大戶買賣）",
-            "score": 30,
-            "reason": "大戶買超 3,770 張，股價也上漲"
+            "score": -30,
+            "reason": "大戶賣超 1,707 張，股價也下跌"
           }
         ],
         "caution": null
@@ -243,15 +243,15 @@
       "code": "2330",
       "name": "台積電",
       "group": "sector",
-      "date": "2026-10-28",
-      "close": 2425.0,
-      "change": 25.0,
-      "volume": 21866835,
-      "inst_buy": 15765763,
-      "inst_sell": 17834553,
-      "inst_net": -2068790,
+      "date": "2026-10-29",
+      "close": 2415.0,
+      "change": -10.0,
+      "volume": 18403916,
+      "inst_buy": 13012993,
+      "inst_sell": 12861311,
+      "inst_net": 151682,
       "score": {
-        "total": -25,
+        "total": 5,
         "label": "中性",
         "breakdown": [
           {
@@ -266,27 +266,27 @@
           },
           {
             "factor": "籌碼（大戶買賣）",
-            "score": -15,
-            "reason": "大戶賣超 2,069 張，但股價還撐得住"
+            "score": 15,
+            "reason": "大戶買超 152 張，但股價還沒漲"
           }
         ],
-        "caution": "RSI 23，偏低，可能賣壓過重，留意反彈"
+        "caution": "RSI 20，偏低，可能賣壓過重，留意反彈"
       }
     },
     {
       "code": "2454",
       "name": "聯發科",
       "group": "sector",
-      "date": "2026-10-28",
-      "close": 4235.0,
-      "change": 275.0,
-      "volume": 7645336,
-      "inst_buy": 4829856,
-      "inst_sell": 5038411,
-      "inst_net": -208555,
+      "date": "2026-10-29",
+      "close": 4045.0,
+      "change": -190.0,
+      "volume": 6867223,
+      "inst_buy": 3461148,
+      "inst_sell": 4683604,
+      "inst_net": -1222456,
       "score": {
-        "total": -25,
-        "label": "中性",
+        "total": -40,
+        "label": "偏空",
         "breakdown": [
           {
             "factor": "趨勢（價格方向）",
@@ -300,32 +300,32 @@
           },
           {
             "factor": "籌碼（大戶買賣）",
-            "score": -15,
-            "reason": "大戶賣超 209 張，但股價還撐得住"
+            "score": -30,
+            "reason": "大戶賣超 1,222 張，股價也下跌"
           }
         ],
-        "caution": "RSI 22，偏低，可能賣壓過重，留意反彈"
+        "caution": "RSI 23，偏低，可能賣壓過重，留意反彈"
       }
     },
     {
       "code": "2317",
       "name": "鴻海",
       "group": "sector",
-      "date": "2026-10-28",
-      "close": 251.5,
-      "change": 4.0,
-      "volume": 42846204,
-      "inst_buy": 32981359,
-      "inst_sell": 20898797,
-      "inst_net": 12082562,
+      "date": "2026-10-29",
+      "close": 248.0,
+      "change": -3.5,
+      "volume": 21358260,
+      "inst_buy": 15445517,
+      "inst_sell": 11708103,
+      "inst_net": 3737414,
       "score": {
-        "total": 20,
-        "label": "中性",
+        "total": 45,
+        "label": "偏多",
         "breakdown": [
           {
             "factor": "趨勢（價格方向）",
-            "score": -40,
-            "reason": "短、中、長期價格都在跌，趨勢向下"
+            "score": 0,
+            "reason": "漲跌不明顯"
           },
           {
             "factor": "動能（漲跌力道）",
@@ -334,8 +334,8 @@
           },
           {
             "factor": "籌碼（大戶買賣）",
-            "score": 30,
-            "reason": "大戶買超 12,083 張，股價也上漲"
+            "score": 15,
+            "reason": "大戶買超 3,737 張，但股價還沒漲"
           }
         ],
         "caution": null
@@ -345,16 +345,16 @@
       "code": "2303",
       "name": "聯電",
       "group": "sector",
-      "date": "2026-10-28",
-      "close": 128.0,
-      "change": 5.5,
-      "volume": 90788224,
-      "inst_buy": 46757629,
-      "inst_sell": 34492363,
-      "inst_net": 12265266,
+      "date": "2026-10-29",
+      "close": 115.5,
+      "change": -12.5,
+      "volume": 350078013,
+      "inst_buy": 42446563,
+      "inst_sell": 225235930,
+      "inst_net": -182789367,
       "score": {
-        "total": 20,
-        "label": "中性",
+        "total": -60,
+        "label": "偏空",
         "breakdown": [
           {
             "factor": "趨勢（價格方向）",
@@ -363,32 +363,32 @@
           },
           {
             "factor": "動能（漲跌力道）",
-            "score": -10,
-            "reason": "還在跌，但力道變弱"
+            "score": -30,
+            "reason": "下跌力道正在增強"
           },
           {
             "factor": "籌碼（大戶買賣）",
-            "score": 30,
-            "reason": "大戶買超 12,265 張，股價也上漲"
+            "score": -30,
+            "reason": "大戶賣超 182,789 張，股價也下跌"
           }
         ],
-        "caution": "RSI 20，偏低，可能賣壓過重，留意反彈"
+        "caution": "RSI 17，偏低，可能賣壓過重，留意反彈"
       }
     },
     {
       "code": "3711",
       "name": "日月光投控",
       "group": "sector",
-      "date": "2026-10-28",
-      "close": 695.0,
-      "change": 44.0,
-      "volume": 20317833,
-      "inst_buy": 16246550,
-      "inst_sell": 10539700,
-      "inst_net": 5706850,
+      "date": "2026-10-29",
+      "close": 683.0,
+      "change": -12.0,
+      "volume": 13169319,
+      "inst_buy": 7010232,
+      "inst_sell": 9148056,
+      "inst_net": -2137824,
       "score": {
-        "total": 20,
-        "label": "中性",
+        "total": -40,
+        "label": "偏空",
         "breakdown": [
           {
             "factor": "趨勢（價格方向）",
@@ -402,8 +402,8 @@
           },
           {
             "factor": "籌碼（大戶買賣）",
-            "score": 30,
-            "reason": "大戶買超 5,707 張，股價也上漲"
+            "score": -30,
+            "reason": "大戶賣超 2,138 張，股價也下跌"
           }
         ],
         "caution": null
@@ -413,21 +413,21 @@
       "code": "2308",
       "name": "台達電",
       "group": "sector",
-      "date": "2026-10-28",
-      "close": 1550.0,
-      "change": 40.0,
-      "volume": 7474962,
-      "inst_buy": 4501423,
-      "inst_sell": 5336706,
-      "inst_net": -835283,
+      "date": "2026-10-29",
+      "close": 1480.0,
+      "change": -70.0,
+      "volume": 17661692,
+      "inst_buy": 8178236,
+      "inst_sell": 12078798,
+      "inst_net": -3900562,
       "score": {
-        "total": -25,
-        "label": "中性",
+        "total": -80,
+        "label": "偏空",
         "breakdown": [
           {
             "factor": "趨勢（價格方向）",
-            "score": 0,
-            "reason": "漲跌不明顯"
+            "score": -40,
+            "reason": "短、中、長期價格都在跌，趨勢向下"
           },
           {
             "factor": "動能（漲跌力道）",
@@ -436,24 +436,24 @@
           },
           {
             "factor": "籌碼（大戶買賣）",
-            "score": -15,
-            "reason": "大戶賣超 835 張，但股價還撐得住"
+            "score": -30,
+            "reason": "大戶賣超 3,901 張，股價也下跌"
           }
         ],
-        "caution": "RSI 18，偏低，可能賣壓過重，留意反彈"
+        "caution": "RSI 11，偏低，可能賣壓過重，留意反彈"
       }
     },
     {
       "code": "3034",
       "name": "聯詠",
       "group": "sector",
-      "date": "2026-10-28",
-      "close": 598.0,
-      "change": -1.0,
-      "volume": 2251262,
-      "inst_buy": 1653892,
-      "inst_sell": 1404372,
-      "inst_net": 249520,
+      "date": "2026-10-29",
+      "close": 596.0,
+      "change": -2.0,
+      "volume": 2999148,
+      "inst_buy": 2438938,
+      "inst_sell": 2258760,
+      "inst_net": 180178,
       "score": {
         "total": 65,
         "label": "偏多",
@@ -471,41 +471,41 @@
           {
             "factor": "籌碼（大戶買賣）",
             "score": 15,
-            "reason": "大戶買超 250 張，但股價還沒漲"
+            "reason": "大戶買超 180 張，但股價還沒漲"
           }
         ],
-        "caution": "RSI 70，偏高，可能買氣過熱，留意回檔"
+        "caution": "RSI 72，偏高，可能買氣過熱，留意回檔"
       }
     },
     {
       "code": "2382",
       "name": "廣達",
       "group": "sector",
-      "date": "2026-10-28",
-      "close": 330.0,
-      "change": 2.5,
-      "volume": 11605047,
-      "inst_buy": 8864459,
-      "inst_sell": 7445532,
-      "inst_net": 1418927,
+      "date": "2026-10-29",
+      "close": 318.0,
+      "change": -12.0,
+      "volume": 11853199,
+      "inst_buy": 6708502,
+      "inst_sell": 9321830,
+      "inst_net": -2613328,
       "score": {
-        "total": 40,
-        "label": "偏多",
+        "total": -60,
+        "label": "偏空",
         "breakdown": [
           {
             "factor": "趨勢（價格方向）",
-            "score": -20,
-            "reason": "短期價格轉弱"
+            "score": -40,
+            "reason": "短、中、長期價格都在跌，趨勢向下"
           },
           {
             "factor": "動能（漲跌力道）",
-            "score": 30,
-            "reason": "上漲力道正在增強"
+            "score": 10,
+            "reason": "還在漲，但力道變弱"
           },
           {
             "factor": "籌碼（大戶買賣）",
-            "score": 30,
-            "reason": "大戶買超 1,419 張，股價也上漲"
+            "score": -30,
+            "reason": "大戶賣超 2,613 張，股價也下跌"
           }
         ],
         "caution": null
@@ -515,47 +515,13 @@
       "code": "2881",
       "name": "富邦金",
       "group": "sector",
-      "date": "2026-10-28",
-      "close": 161.0,
-      "change": -1.0,
-      "volume": 10269205,
-      "inst_buy": 7257760,
-      "inst_sell": 5466631,
-      "inst_net": 1791129,
-      "score": {
-        "total": 45,
-        "label": "偏多",
-        "breakdown": [
-          {
-            "factor": "趨勢（價格方向）",
-            "score": 40,
-            "reason": "短、中、長期價格都在漲，趨勢向上"
-          },
-          {
-            "factor": "動能（漲跌力道）",
-            "score": -10,
-            "reason": "還在跌，但力道變弱"
-          },
-          {
-            "factor": "籌碼（大戶買賣）",
-            "score": 15,
-            "reason": "大戶買超 1,791 張，但股價還沒漲"
-          }
-        ],
-        "caution": null
-      }
-    },
-    {
-      "code": "2882",
-      "name": "國泰金",
-      "group": "sector",
-      "date": "2026-10-28",
-      "close": 115.5,
-      "change": 1.5,
-      "volume": 20794493,
-      "inst_buy": 19191706,
-      "inst_sell": 13399267,
-      "inst_net": 5792439,
+      "date": "2026-10-29",
+      "close": 162.0,
+      "change": 1.0,
+      "volume": 11226501,
+      "inst_buy": 9959594,
+      "inst_sell": 5223804,
+      "inst_net": 4735790,
       "score": {
         "total": 60,
         "label": "偏多",
@@ -573,7 +539,41 @@
           {
             "factor": "籌碼（大戶買賣）",
             "score": 30,
-            "reason": "大戶買超 5,792 張，股價也上漲"
+            "reason": "大戶買超 4,736 張，股價也上漲"
+          }
+        ],
+        "caution": null
+      }
+    },
+    {
+      "code": "2882",
+      "name": "國泰金",
+      "group": "sector",
+      "date": "2026-10-29",
+      "close": 116.5,
+      "change": 1.0,
+      "volume": 10714366,
+      "inst_buy": 8792810,
+      "inst_sell": 6947536,
+      "inst_net": 1845274,
+      "score": {
+        "total": 100,
+        "label": "偏多",
+        "breakdown": [
+          {
+            "factor": "趨勢（價格方向）",
+            "score": 40,
+            "reason": "短、中、長期價格都在漲，趨勢向上"
+          },
+          {
+            "factor": "動能（漲跌力道）",
+            "score": 30,
+            "reason": "上漲力道正在增強"
+          },
+          {
+            "factor": "籌碼（大戶買賣）",
+            "score": 30,
+            "reason": "大戶買超 1,845 張，股價也上漲"
           }
         ],
         "caution": null
@@ -583,49 +583,15 @@
       "code": "2886",
       "name": "兆豐金",
       "group": "sector",
-      "date": "2026-10-28",
-      "close": 53.9,
-      "change": -1.1000000000000014,
-      "volume": 16633687,
-      "inst_buy": 12462988,
-      "inst_sell": 14991487,
-      "inst_net": -2528499,
+      "date": "2026-10-29",
+      "close": 54.8,
+      "change": 0.8999999999999986,
+      "volume": 15397600,
+      "inst_buy": 13040243,
+      "inst_sell": 10489677,
+      "inst_net": 2550566,
       "score": {
-        "total": 20,
-        "label": "中性",
-        "breakdown": [
-          {
-            "factor": "趨勢（價格方向）",
-            "score": 40,
-            "reason": "短、中、長期價格都在漲，趨勢向上"
-          },
-          {
-            "factor": "動能（漲跌力道）",
-            "score": 10,
-            "reason": "還在漲，但力道變弱"
-          },
-          {
-            "factor": "籌碼（大戶買賣）",
-            "score": -30,
-            "reason": "大戶賣超 2,528 張，股價也下跌"
-          }
-        ],
-        "caution": "RSI 76，偏高，可能買氣過熱，留意回檔"
-      }
-    },
-    {
-      "code": "2891",
-      "name": "中信金",
-      "group": "sector",
-      "date": "2026-10-28",
-      "close": 74.2,
-      "change": -0.7999999999999972,
-      "volume": 23915490,
-      "inst_buy": 18674483,
-      "inst_sell": 18309836,
-      "inst_net": 364647,
-      "score": {
-        "total": 65,
+        "total": 80,
         "label": "偏多",
         "breakdown": [
           {
@@ -640,8 +606,42 @@
           },
           {
             "factor": "籌碼（大戶買賣）",
-            "score": 15,
-            "reason": "大戶買超 365 張，但股價還沒漲"
+            "score": 30,
+            "reason": "大戶買超 2,551 張，股價也上漲"
+          }
+        ],
+        "caution": "RSI 76，偏高，可能買氣過熱，留意回檔"
+      }
+    },
+    {
+      "code": "2891",
+      "name": "中信金",
+      "group": "sector",
+      "date": "2026-10-29",
+      "close": 75.3,
+      "change": 1.0999999999999943,
+      "volume": 38412046,
+      "inst_buy": 35549084,
+      "inst_sell": 21045338,
+      "inst_net": 14503746,
+      "score": {
+        "total": 80,
+        "label": "偏多",
+        "breakdown": [
+          {
+            "factor": "趨勢（價格方向）",
+            "score": 40,
+            "reason": "短、中、長期價格都在漲，趨勢向上"
+          },
+          {
+            "factor": "動能（漲跌力道）",
+            "score": 10,
+            "reason": "還在漲，但力道變弱"
+          },
+          {
+            "factor": "籌碼（大戶買賣）",
+            "score": 30,
+            "reason": "大戶買超 14,504 張，股價也上漲"
           }
         ],
         "caution": "RSI 72，偏高，可能買氣過熱，留意回檔"
@@ -651,13 +651,47 @@
       "code": "2892",
       "name": "第一金",
       "group": "sector",
-      "date": "2026-10-28",
-      "close": 42.8,
-      "change": -0.3500000000000014,
-      "volume": 21506194,
-      "inst_buy": 17171505,
-      "inst_sell": 18023862,
-      "inst_net": -852357,
+      "date": "2026-10-29",
+      "close": 44.45,
+      "change": 1.6500000000000057,
+      "volume": 37167538,
+      "inst_buy": 22780449,
+      "inst_sell": 19412317,
+      "inst_net": 3368132,
+      "score": {
+        "total": 100,
+        "label": "偏多",
+        "breakdown": [
+          {
+            "factor": "趨勢（價格方向）",
+            "score": 40,
+            "reason": "短、中、長期價格都在漲，趨勢向上"
+          },
+          {
+            "factor": "動能（漲跌力道）",
+            "score": 30,
+            "reason": "上漲力道正在增強"
+          },
+          {
+            "factor": "籌碼（大戶買賣）",
+            "score": 30,
+            "reason": "大戶買超 3,368 張，股價也上漲"
+          }
+        ],
+        "caution": "RSI 84，偏高，可能買氣過熱，留意回檔"
+      }
+    },
+    {
+      "code": "2884",
+      "name": "玉山金",
+      "group": "sector",
+      "date": "2026-10-29",
+      "close": 49.0,
+      "change": 0.6499999999999986,
+      "volume": 24633774,
+      "inst_buy": 23303786,
+      "inst_sell": 18211512,
+      "inst_net": 5092274,
       "score": {
         "total": 40,
         "label": "偏多",
@@ -669,47 +703,13 @@
           },
           {
             "factor": "動能（漲跌力道）",
+            "score": -30,
+            "reason": "下跌力道正在增強"
+          },
+          {
+            "factor": "籌碼（大戶買賣）",
             "score": 30,
-            "reason": "上漲力道正在增強"
-          },
-          {
-            "factor": "籌碼（大戶買賣）",
-            "score": -30,
-            "reason": "大戶賣超 852 張，股價也下跌"
-          }
-        ],
-        "caution": "RSI 81，偏高，可能買氣過熱，留意回檔"
-      }
-    },
-    {
-      "code": "2884",
-      "name": "玉山金",
-      "group": "sector",
-      "date": "2026-10-28",
-      "close": 48.35,
-      "change": -1.1000000000000014,
-      "volume": 27967573,
-      "inst_buy": 16551747,
-      "inst_sell": 24522859,
-      "inst_net": -7971112,
-      "score": {
-        "total": 20,
-        "label": "中性",
-        "breakdown": [
-          {
-            "factor": "趨勢（價格方向）",
-            "score": 40,
-            "reason": "短、中、長期價格都在漲，趨勢向上"
-          },
-          {
-            "factor": "動能（漲跌力道）",
-            "score": 10,
-            "reason": "還在漲，但力道變弱"
-          },
-          {
-            "factor": "籌碼（大戶買賣）",
-            "score": -30,
-            "reason": "大戶賣超 7,971 張，股價也下跌"
+            "reason": "大戶買超 5,092 張，股價也上漲"
           }
         ],
         "caution": null
@@ -719,15 +719,15 @@
       "code": "2885",
       "name": "元大金",
       "group": "sector",
-      "date": "2026-10-28",
-      "close": 73.0,
-      "change": -0.20000000000000284,
-      "volume": 19871850,
-      "inst_buy": 15957901,
-      "inst_sell": 6769827,
-      "inst_net": 9188074,
+      "date": "2026-10-29",
+      "close": 73.4,
+      "change": 0.4000000000000057,
+      "volume": 12329734,
+      "inst_buy": 10569353,
+      "inst_sell": 5541187,
+      "inst_net": 5028166,
       "score": {
-        "total": 85,
+        "total": 100,
         "label": "偏多",
         "breakdown": [
           {
@@ -742,8 +742,8 @@
           },
           {
             "factor": "籌碼（大戶買賣）",
-            "score": 15,
-            "reason": "大戶買超 9,188 張，但股價還沒漲"
+            "score": 30,
+            "reason": "大戶買超 5,028 張，股價也上漲"
           }
         ],
         "caution": null
