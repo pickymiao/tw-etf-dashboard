@@ -1,19 +1,15 @@
 {
  "version": 2,
- "updated_at": "2026-11-26T19:44:36+00:00",
- "as_of": "2026-11-26",
+ "updated_at": "2026-11-27T19:34:38+00:00",
+ "as_of": "2026-11-27",
  "state": {
   "level": 3,
   "label": "大跌",
   "reasons": [
-   "台股距 60 日高點 -21.4%"
+   "台股距 60 日高點 -21.1%"
   ]
  },
  "state_history": [
-  {
-   "date": "2026-05-20",
-   "level": 0
-  },
   {
    "date": "2026-05-21",
    "level": 0
@@ -529,18 +525,22 @@
   {
    "date": "2026-11-26",
    "level": 3
+  },
+  {
+   "date": "2026-11-27",
+   "level": 3
   }
  ],
  "summary": [
-  "台股距 60 日高點 -21.4%，今日 +2.5%，權值股僅 0% 站上月線",
-  "費半本週 -9.1%、NASDAQ -3.5%，VIX 26.8",
-  "成長類本週 +5.2%，高股息 -0.9%，成長類表現較強"
+  "台股距 60 日高點 -21.1%，今日 +0.4%，權值股僅 0% 站上月線",
+  "費半本週 -2.5%、NASDAQ +1.1%，VIX 23.8",
+  "成長類本週 +12.4%，高股息 +4.5%，成長類表現較強"
  ],
  "taiex": {
-  "close": 39151.81,
-  "day": 0.025,
-  "week": 0.0189,
-  "dd60": -0.2142
+  "close": 39308.08,
+  "day": 0.004,
+  "week": 0.0909,
+  "dd60": -0.211
  },
  "breadth_above_ma20": 0.0,
  "global": [
@@ -548,55 +548,55 @@
    "key": "SOX",
    "label": "費半",
    "unit": "pct",
-   "date": "2026-11-25",
-   "value": 8774.8604,
-   "day": -0.0065,
-   "week": -0.091
+   "date": "2026-11-27",
+   "value": 9186.7061,
+   "day": 0.0469,
+   "week": -0.0247
   },
   {
    "key": "NASDAQ",
    "label": "NASDAQ",
    "unit": "pct",
-   "date": "2026-11-25",
-   "value": 23585.8008,
-   "day": -0.0062,
-   "week": -0.0346
+   "date": "2026-11-27",
+   "value": 24129.5,
+   "day": 0.0231,
+   "week": 0.0105
   },
   {
    "key": "SP500",
    "label": "S&P 500",
    "unit": "pct",
-   "date": "2026-11-25",
-   "value": 7182.7798,
-   "day": -0.0025,
-   "week": -0.0192
+   "date": "2026-11-27",
+   "value": 7297.4902,
+   "day": 0.016,
+   "week": 0.017
   },
   {
    "key": "VIX",
    "label": "VIX",
    "unit": "level",
-   "date": "2026-11-26",
-   "value": 26.8,
-   "day": -1.49,
-   "week": -1.64
+   "date": "2026-11-27",
+   "value": 23.81,
+   "day": -2.99,
+   "week": -12.08
   },
   {
    "key": "US10Y",
    "label": "美債 10Y",
    "unit": "yield",
-   "date": "2026-11-25",
-   "value": 4.848,
-   "day": -0.056,
-   "week": -0.218
+   "date": "2026-11-27",
+   "value": 4.936,
+   "day": 0.088,
+   "week": -0.116
   },
   {
    "key": "USDTWD",
    "label": "美元／台幣",
    "unit": "fx",
-   "date": "2026-11-26",
-   "value": 32.942,
-   "day": 0.0006,
-   "week": 0.0004
+   "date": "2026-11-27",
+   "value": 32.956,
+   "day": -0.007,
+   "week": -0.0021
   }
  ],
  "holdings": [
@@ -604,28 +604,28 @@
    "code": "009816",
    "name": "凱基台灣TOP50",
    "category": "growth",
-   "date": "2026-11-26",
-   "close": 13.71,
-   "day": 0.0293,
-   "week": 0.0156,
-   "month": -0.1521,
-   "dd60": -0.1964,
-   "corr_taiex": 0.9887,
-   "corr_sox_prev": 0.5976,
+   "date": "2026-11-27",
+   "close": 13.67,
+   "day": -0.0029,
+   "week": 0.0849,
+   "month": -0.1462,
+   "dd60": -0.1987,
+   "corr_taiex": 0.9879,
+   "corr_sox_prev": 0.596,
    "dividends": []
   },
   {
    "code": "00981A",
    "name": "主動統一台股增長",
    "category": "growth",
-   "date": "2026-11-26",
-   "close": 21.89,
-   "day": 0.0662,
-   "week": 0.0821,
-   "month": -0.236,
-   "dd60": -0.3296,
-   "corr_taiex": 0.9399,
-   "corr_sox_prev": 0.4858,
+   "date": "2026-11-27",
+   "close": 21.58,
+   "day": -0.0142,
+   "week": 0.1615,
+   "month": -0.224,
+   "dd60": -0.3391,
+   "corr_taiex": 0.9379,
+   "corr_sox_prev": 0.4818,
    "dividends": [
     {
      "ex_date": "2026-03-17",
@@ -645,14 +645,14 @@
    "code": "00400A",
    "name": "主動國泰動能高息",
    "category": "growth",
-   "date": "2026-11-26",
-   "close": 11.17,
-   "day": 0.0638,
-   "week": 0.0578,
-   "month": -0.233,
-   "dd60": -0.3158,
-   "corr_taiex": 0.9462,
-   "corr_sox_prev": 0.4942,
+   "date": "2026-11-27",
+   "close": 11.03,
+   "day": -0.0125,
+   "week": 0.1255,
+   "month": -0.2242,
+   "dd60": -0.3243,
+   "corr_taiex": 0.944,
+   "corr_sox_prev": 0.4909,
    "dividends": [
     {
      "ex_date": "2026-07-09",
@@ -680,14 +680,14 @@
    "code": "00878",
    "name": "國泰永續高股息",
    "category": "dividend",
-   "date": "2026-11-26",
-   "close": 29.52,
-   "day": 0.0322,
-   "week": -0.0087,
-   "month": -0.1388,
-   "dd60": -0.1388,
-   "corr_taiex": 0.8924,
-   "corr_sox_prev": 0.5741,
+   "date": "2026-11-27",
+   "close": 29.26,
+   "day": -0.0088,
+   "week": 0.0439,
+   "month": -0.1379,
+   "dd60": -0.1463,
+   "corr_taiex": 0.8891,
+   "corr_sox_prev": 0.5708,
    "dividends": [
     {
      "ex_date": "2023-08-16",
@@ -751,14 +751,14 @@
    "code": "00900",
    "name": "富邦特選高股息30",
    "category": "dividend",
-   "date": "2026-11-26",
-   "close": 16.95,
-   "day": 0.0236,
-   "week": -0.014,
-   "month": -0.1451,
-   "dd60": -0.1468,
-   "corr_taiex": 0.8424,
-   "corr_sox_prev": 0.53,
+   "date": "2026-11-27",
+   "close": 16.79,
+   "day": -0.0094,
+   "week": 0.0294,
+   "month": -0.1476,
+   "dd60": -0.1549,
+   "corr_taiex": 0.8397,
+   "corr_sox_prev": 0.5298,
    "dividends": [
     {
      "ex_date": "2023-08-16",
@@ -886,14 +886,14 @@
    "code": "00940",
    "name": "元大台灣價值高息",
    "category": "dividend",
-   "date": "2026-11-26",
-   "close": 11.29,
-   "day": 0.0264,
-   "week": -0.0044,
-   "month": -0.1577,
-   "dd60": -0.1595,
-   "corr_taiex": 0.9177,
-   "corr_sox_prev": 0.4954,
+   "date": "2026-11-27",
+   "close": 11.27,
+   "day": -0.0018,
+   "week": 0.0602,
+   "month": -0.1497,
+   "dd60": -0.161,
+   "corr_taiex": 0.9175,
+   "corr_sox_prev": 0.4956,
    "dividends": [
     {
      "ex_date": "2024-07-11",
@@ -1015,8 +1015,8 @@
   }
  ],
  "category_week": {
-  "growth": 0.0518,
-  "dividend": -0.009
+  "growth": 0.124,
+  "dividend": 0.0445
  },
  "rules": {
   "drawdown_window": 60,
